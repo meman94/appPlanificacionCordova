@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<META http-equiv="Content-Type" content="text/html" charset="utf-8" />
+
+	<title>Indicador - Avance</title>
+
+	<!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Our Custom CSS -->
+	<link rel="stylesheet" href="css/mainStyle.css">
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+
+	<!-- Font Awesome JS -->
+	<script defer src="js/solid.js"></script>
+	<script defer src="js/fontawesome.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+	<script type="text/javascript" src="js/loading-bar.js"></script>
+
+	
+	<style type="text/css">
+	.lbl{
+		font-size: 13px;
+	}
+
+</style>
+
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div id="dismiss">
+				<i class="fas fa-arrow-left"></i>
+			</div>
+
+			<div class="sidebar-header">
+				<h3>Menu de Opciones</h3>
+			</div>
+
+			<ul class="list-unstyled components">                
+				<li >
+					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Indicador</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li id="editIndicator">
+							<a href="#" >Editar</a>
+						</li>
+						<li id="deleteIndicator">
+							<a href="#" >Eliminar</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Avance</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li id="addAdvance">
+							<a href="#" >Agregar</a>
+						</li>
+						<li id="editAdvance">
+							<a href="#" >Editar</a>
+						</li>
+						<li id="deleteAdvance"> 
+							<a href="#" >Eliminar</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<ul class="list-unstyled CTAs">
+				<li>
+					<a type="button" class="btn btn-dark" onclick="window.history.back()">Atrás</a>					
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i>
+						<span></span>
+					</button>
+
+					<a class="nav-link" href="#"></a>
+					<div id="btnGuardarIndicador" hidden><br><a href="#" type="button" class="btn btn-info float-right">Guardar</a></div>
+					<div id="btnGuardarAvance" hidden><br><a href="#" type="button" class="btn btn-info float-right">Guardar</a></div>
+
+
+				</div>
+			</nav>
+
+			<!-- TODO EL CONTENIDO -->
+
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+
+						<div class="listIndicator">
+							<input type="hidden" id="idIndicator" value="" />
+							<div class="item">
+								<label><b>Indicador:</b>&nbsp;&nbsp;</label><label id="indicador" class="float-right" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="indicadorTxt" value="" class="form-control" hidden />
+							</div>
+
+							<div class="item">
+								<label><b>Meta:</b>&nbsp;&nbsp;</label><label id="meta"  class="float-right" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="metaTxt" value="" class="form-control" hidden />
+							</div>
+
+							<div class="item">
+								<label><b>Presupuesto Estimado:</b>&nbsp;&nbsp;</label><label id="presupuestoEstimado"  class="float-right" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="presupuestoEstimadoTxt" value="" class="form-control" hidden />
+							</div>
+
+							<div class="item">
+								<label><b>Tiempo Estimado:</b>&nbsp;&nbsp;</label><label id="tiempoEstimado"  class="float-right" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="tiempoEstimadoTxt" value="" class="form-control" hidden />
+							</div>
+						</div>
+
+						
+
+						<br>
+
+						<div class="form-group">					
+							
+
+							<div class="ldBar label-center" style="width:70%;height:100px;margin:auto" id="porcentajeAvanceMeta" data-preset="circle"></div>
+							<div align="center"><label>Avance Meta</label></div>
+
+							<div class="ldBar label-center" style="width:70%;height:100px;margin:auto" id="porcentajeAvanceFinanciero" data-preset="circle"></div>
+							<div align="center"><label>Avance Financiero</label></div>
+
+							<div class="ldBar label-center" style="width:70%;height:100px;margin:auto" id="porcentajeTiempoAvance" data-preset="circle"></div>
+							<div align="center"><label>Tiempo Avance</label></div>
+
+						</div>
+						
+
+
+						<div class="list">
+
+
+							<input type="hidden" id="id" value="" />
+							<ul class="list" id="listIndicadorAvance">
+							</ul>
+
+						</div>
+
+						<div align="center" id="loading">
+
+							<div class="lds-css ng-scope" style="width: 200px; height: 200px;"><div style="width:100%;height:100%" class="lds-ripple"><div></div><div></div></div><style type="text/css">@keyframes lds-ripple {
+								0% {
+									top: 96px;
+									left: 96px;
+									width: 0;
+									height: 0;
+									opacity: 1;
+								}
+								100% {
+									top: 18px;
+									left: 18px;
+									width: 156px;
+									height: 156px;
+									opacity: 0;
+								}
+							}
+							@-webkit-keyframes lds-ripple {
+								0% {
+									top: 96px;
+									left: 96px;
+									width: 0;
+									height: 0;
+									opacity: 1;
+								}
+								100% {
+									top: 18px;
+									left: 18px;
+									width: 156px;
+									height: 156px;
+									opacity: 0;
+								}
+							}
+							.lds-ripple {
+								position: relative;
+							}
+							.lds-ripple div {
+								box-sizing: content-box;
+								position: absolute;
+								border-width: 4px;
+								border-style: solid;
+								opacity: 1;
+								border-radius: 50%;
+								-webkit-animation: lds-ripple 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+								animation: lds-ripple 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+							}
+							.lds-ripple div:nth-child(1) {
+								border-color: #222831;
+							}
+							.lds-ripple div:nth-child(2) {
+								border-color: #00adb5;
+								-webkit-animation-delay: -0.7s;
+								animation-delay: -0.7s;
+							}
+							.lds-ripple {
+								width: 200px !important;
+								height: 200px !important;
+								-webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+								transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+							}
+						</style></div>
+
+
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-3" id="contenedor">
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<!-- TODO EL CONTENIDO -->
+
+	</div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="js/jquery.min.js"></script>
+<!-- Popper.JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript" src="js/geturi.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#sidebar").mCustomScrollbar({
+			theme: "minimal"
+		});
+
+		$('#dismiss, .overlay').on('click', function () {
+			$('#sidebar').removeClass('active');
+			$('.overlay').removeClass('active');
+		});
+
+		$('#sidebarCollapse').on('click', function () {
+			$('#sidebar').addClass('active');
+			$('.overlay').addClass('active');
+			$('.collapse.in').toggleClass('in');
+			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+		});
+
+
+
+
+
+		var id = decodeURI(getUrlVars()["indicadorId"]);
+		var indicador = decodeURI(getUrlVars()["indicador"]);
+		var meta = decodeURI(getUrlVars()["meta"]);
+		var presupuestoEstimado = decodeURI(getUrlVars()["presupuestoEstimado"]);
+		var tiempoEstimado = decodeURI(getUrlVars()["tiempoEstimado"]);			
+		$('#idIndicator').val(id);
+		$('#indicador').text(indicador);
+		$('#indicadorTxt').val(indicador);
+		$('#meta').text(meta);
+		$('#metaTxt').val(meta);
+		$('#presupuestoEstimado').text(presupuestoEstimado);
+		$('#presupuestoEstimadoTxt').val(presupuestoEstimado);
+		$('#tiempoEstimado').text(tiempoEstimado);
+		$('#tiempoEstimadoTxt').val(tiempoEstimado);			
+
+		var div = document.getElementById('contenedor');
+
+		var dataString = "id=" + id ;				
+		$.ajax({
+			type: "POST",
+			url: "http://appplanificacion.000webhostapp.com/app/indicadorAvance.php",
+			data: dataString,
+			crossDomain: true,
+			cache: false,
+			beforeSend: function() {
+
+			},
+			success: function(res) {	
+				$("#loading").toggle();											
+				$('#listIndicadorAvance').empty();						
+				res = JSON.parse(res);	
+				if (jQuery.isEmptyObject(res)) {
+
+					div.innerHTML = ''+												
+					'<div style="left:50%;"><br><br><h5>Sin Avance</h5></div>'+											
+					'';
+					$("#editAdvance").hide();
+					$("#deleteAdvance").hide();						
+
+				}else{
+					$("#addAdvance").hide();	
+
+					$.each(res,function(index,field) {
+
+						var str = field.medioVerificacion;
+						var img = str.replace("public/", "");
+
+						div.innerHTML = ''+							
+						'<input type="text" id="idAvance" value="'+field.id+'" class="form-control" hidden />'+
+
+						'<div class="item">'+		
+						'<label><b>Avance:</b>&nbsp;&nbsp;</label><label id="avance" class="float-right" style="text-align: justify;text-justify: inter-word;">'+field.avance+'</label>'+	
+						'<input type="text" id="avanceTxt" value="'+field.avance+'" class="form-control" hidden />'+							
+						'</div>'+
+
+						'<div class="item">'+		
+						'<label><b>Presupuesto Ejecutado:</b>&nbsp;&nbsp;</label><label id="presupuestoEjecutado" class="float-right" style="text-align: justify;text-justify: inter-word;">'+field.presupuestoEjecutado+'</label>'+	
+						'<input type="text" id="presupuestoEjecutadoTxt" value="'+field.presupuestoEjecutado+'" class="form-control" hidden />'+							
+						'</div>'+
+
+						'<div class="item">'+		
+						'<label><b>Tiempo Ejecucion (meses):</b>&nbsp;&nbsp;</label><label id="tiempoEjecucion" class="float-right" style="text-align: justify;text-justify: inter-word;">'+field.tiempoEjecucion+'</label>'+	
+						'<input type="text" id="tiempoEjecucionTxt" value="'+field.tiempoEjecucion+'" class="form-control" hidden />'+							
+						'</div>'+
+
+						'<div class="item">'+		
+						'<label><b>Observaciones:</b>&nbsp;&nbsp;</label><label id="observaciones" class="float-right" style="text-align: justify;text-justify: inter-word;">'+field.observaciones+'</label>'+	
+						'<input type="text" id="observacionesTxt" value="'+field.observaciones+'" class="form-control" hidden />'+							
+						'</div>'+
+
+
+						'<div class="form-group two-fields">'+					
+						'<div class="input-group">'+
+						'<label>Medio de Verificacion</label>'+
+						'<a href="http://planificacion3.frb.io/storage/'+img+'">'+
+						'<img width="100%" src="http://planificacion3.frb.io/storage/'+img+'">'+
+						'</a>'+						
+						'</div>'+
+						'</div>'+
+
+
+						'';
+
+						var bar1 = new ldBar("#porcentajeAvanceMeta");
+						var bar2 = document.getElementById('porcentajeAvanceMeta').ldBar;
+						bar1.set((field.avance*100)/meta);
+
+						var bar3 = new ldBar("#porcentajeAvanceFinanciero");
+						var bar4 = document.getElementById('porcentajeAvanceFinanciero').ldBar;
+						bar3.set((field.presupuestoEjecutado*100)/presupuestoEstimado);
+
+						var bar5 = new ldBar("#porcentajeTiempoAvance");
+						var bar6 = document.getElementById('porcentajeTiempoAvance').ldBar;
+						bar5.set((field.tiempoEjecucion*100)/tiempoEstimado);
+
+
+
+
+
+					});
+				}									
+
+			}
+		});
+
+
+
+		$('#editIndicator').click(function(e) {  				
+			$(".overlay").removeClass( "active" );
+			$("#sidebar").removeClass( "active" );
+			$("#indicadorTxt").removeAttr('hidden');
+			$("#indicador").attr("hidden", true);	
+			$("#metaTxt").removeAttr('hidden');
+			$("#meta").attr("hidden", true);	
+			$("#presupuestoEstimadoTxt").removeAttr('hidden');
+			$("#presupuestoEstimado").attr("hidden", true);
+			$("#tiempoEstimadoTxt").removeAttr('hidden');
+			$("#tiempoEstimado").attr("hidden", true);
+			$("#btnGuardarIndicador").removeAttr('hidden');				
+
+		});
+
+
+
+		$('#btnGuardarIndicador').click(function(e) {  				
+			$("#indicadorTxt").attr("hidden", true);
+			$("#indicador").removeAttr('hidden');
+			$("#metaTxt").attr("hidden", true);
+			$("#meta").removeAttr('hidden');
+			$("#presupuestoEstimadoTxt").attr("hidden", true);
+			$("#presupuestoEstimado").removeAttr('hidden');
+			$("#tiempoEstimadoTxt").attr("hidden", true);
+			$("#tiempoEstimado").removeAttr('hidden');
+			$("#btnGuardarIndicador").attr("hidden", true);
+
+
+			var id = $("#idIndicator").val();
+			var indicador = $("#indicadorTxt").val();
+			var meta = $("#metaTxt").val();
+			var presupuestoEstimado = $("#presupuestoEstimadoTxt").val();
+			var tiempoEstimado = $("#tiempoEstimadoTxt").val();
+
+			var dataString = "id=" + id + "&indicador=" + indicador + "&meta=" + meta + "&presupuestoEstimado=" + presupuestoEstimado + "&tiempoEstimado=" + tiempoEstimado + "&btnGuardarIndicador=";
+
+			$.ajax({
+				type: "POST",
+				url: "http://appplanificacion.000webhostapp.com/app/updateIndicator.php",
+				data: dataString,
+				crossDomain: true,
+				cache: false,
+				beforeSend: function() {
+
+				},
+				success: function(res) {	
+					//alert(res);
+					res = JSON.parse(res);
+					$.each(res,function(index,field) {	
+						$('#indicador').text(field.indicador);
+						$('#indicadorTxt').val(field.indicador);
+						$('#meta').text(field.meta);
+						$('#metaTxt').val(field.meta);
+						$('#presupuestoEstimado').text(field.presupuestoEstimado);
+						$('#presupuestoEstimadoTxt').val(field.presupuestoEstimado);
+						$('#tiempoEstimado').text(field.tiempoEstimado);
+						$('#tiempoEstimadoTxt').val(field.tiempoEstimado);
+
+						var bar1 = new ldBar("#porcentajeAvanceMeta");
+						var bar2 = document.getElementById('porcentajeAvanceMeta').ldBar;
+						bar1.set(($('#avanceTxt').val()*100)/field.meta);
+
+						var bar3 = new ldBar("#porcentajeAvanceFinanciero");
+						var bar4 = document.getElementById('porcentajeAvanceFinanciero').ldBar;
+						bar3.set(($('#presupuestoEjecutadoTxt').val()*100)/field.presupuestoEstimado);
+
+						var bar5 = new ldBar("#porcentajeTiempoAvance");
+						var bar6 = document.getElementById('porcentajeTiempoAvance').ldBar;
+						bar5.set(($('#tiempoEjecucionTxt').val()*100)/field.tiempoEstimado);			
+
+					});
+
+				}
+			});
+
+
+		}); /*btn-guardar*/
+
+
+		$('#editAdvance').click(function(e) {  				
+			$(".overlay").removeClass( "active" );
+			$("#sidebar").removeClass( "active" );
+			$("#avanceTxt").removeAttr('hidden');
+			$("#avance").attr("hidden", true);	
+			$("#presupuestoEjecutadoTxt").removeAttr('hidden');
+			$("#presupuestoEjecutado").attr("hidden", true);	
+			$("#tiempoEjecucionTxt").removeAttr('hidden');
+			$("#tiempoEjecucion").attr("hidden", true);
+			$("#observacionesTxt").removeAttr('hidden');
+			$("#observaciones").attr("hidden", true);
+			$("#btnGuardarAvance").removeAttr('hidden');				
+
+		});
+
+
+
+		$('#btnGuardarAvance').click(function(e) {  				
+			$("#avanceTxt").attr("hidden", true);
+			$("#avance").removeAttr('hidden');
+			$("#presupuestoEjecutadoTxt").attr("hidden", true);
+			$("#presupuestoEjecutado").removeAttr('hidden');
+			$("#tiempoEjecucionTxt").attr("hidden", true);
+			$("#tiempoEjecucion").removeAttr('hidden');
+			$("#observacionesTxt").attr("hidden", true);
+			$("#observaciones").removeAttr('hidden');
+			$("#btnGuardarAvance").attr("hidden", true);
+
+
+			var id = $("#idAvance").val();
+			var avance = $("#avanceTxt").val();
+			var presupuestoEjecutado = $("#presupuestoEjecutadoTxt").val();
+			var tiempoEjecucion = $("#tiempoEjecucionTxt").val();
+			var observaciones = $("#observacionesTxt").val();
+
+			var dataString = "id=" + id + "&avance=" + avance + "&presupuestoEjecutado=" + presupuestoEjecutado + "&tiempoEjecucion=" + tiempoEjecucion + "&observaciones=" + observaciones + "&btnGuardarAvance=";
+
+			$.ajax({
+				type: "POST",
+				url: "http://appplanificacion.000webhostapp.com/app/updateAdvance.php",
+				data: dataString,
+				crossDomain: true,
+				cache: false,
+				beforeSend: function() {
+
+				},
+				success: function(res) {	
+					//alert(res);
+					res = JSON.parse(res);
+					$.each(res,function(index,field) {	
+						$('#avance').text(field.avance);
+						$('#avanceTxt').val(field.avance);
+						$('#presupuestoEjecutado').text(field.presupuestoEjecutado);
+						$('#presupuestoEjecutadoTxt').val(field.presupuestoEjecutado);
+						$('#tiempoEjecucion').text(field.tiempoEjecucion);
+						$('#tiempoEjecucionTxt').val(field.tiempoEjecucion);
+						$('#observaciones').text(field.observaciones);
+						$('#observacionesTxt').val(field.observaciones);
+
+						var bar1 = new ldBar("#porcentajeAvanceMeta");
+						var bar2 = document.getElementById('porcentajeAvanceMeta').ldBar;
+						bar1.set(($('#avanceTxt').val()*100)/$('#metaTxt').val());
+
+						var bar3 = new ldBar("#porcentajeAvanceFinanciero");
+						var bar4 = document.getElementById('porcentajeAvanceFinanciero').ldBar;
+						bar3.set(($('#presupuestoEjecutadoTxt').val()*100)/$('#presupuestoEstimadoTxt').val());
+
+						var bar5 = new ldBar("#porcentajeTiempoAvance");
+						var bar6 = document.getElementById('porcentajeTiempoAvance').ldBar;
+						bar5.set(($('#tiempoEjecucionTxt').val()*100)/$('#tiempoEstimadoTxt').val());			
+
+					});
+
+				}
+			});
+
+
+		}); /*btn-guardar*/
+
+
+
+	});
+</script>
+</body>
+
+</html>

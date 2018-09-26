@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<META http-equiv="Content-Type" content="text/html" charset="utf-8" />
+
+	<title>Lista de Proyectos</title>
+
+	<!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Our Custom CSS -->
+	<link rel="stylesheet" href="css/mainStyle.css">
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+
+	<!-- Font Awesome JS -->
+	<script defer src="js/solid.js"></script>
+	<script defer src="js/fontawesome.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+	<script type="text/javascript" src="js/loading-bar.js"></script>	
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div id="dismiss">
+				<i class="fas fa-arrow-left"></i>
+			</div>
+
+			<div class="sidebar-header">
+				<h3>Menú de Opciones</h3>
+			</div>		
+
+			<ul class="list-unstyled components">                
+				<li >
+					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Proyecto</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li>
+							<a href="#">Editar</a>
+						</li>
+						<li>
+							<a href="#">Eliminar</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Objetivo Específico</a>
+					<ul class="collapse list-unstyled" id="pageSubmenu">
+						<li>
+							<a href="#">Agregar</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<ul class="list-unstyled CTAs">
+				<li>
+					<a type="button" class="btn btn-dark" onclick="window.history.back()">Atrás</a>					
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i>
+						<span></span>
+					</button>
+
+					<a class="nav-link" href="#" >DETALLE DE PROYECTOS</a>
+
+				</div>
+			</nav>
+
+			<!-- TODO EL CONTENIDO -->
+
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						
+						<ul class="list-group" id="listview" style="text-align: justify;text-justify: inter-word;">
+						</ul>
+
+
+						<div class="listProyect">
+							<input type="hidden" id="id" value="" />
+							<div class="item">
+								<label><b>Título:</b>&nbsp;&nbsp;</label><label id="indicador" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="nombreTxt" value="" class="form-control" hidden />
+							</div>
+							<div class="item">
+								<label><b>Canton:</b>&nbsp;&nbsp; </label><label id="canton" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="cantonTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Parroquia:</b>&nbsp;&nbsp; </label><label id="parroquia" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="parroquiaTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Organización Beneficiaria:</b>&nbsp;&nbsp; </label><label id="organizacionBeneficiaria" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="organizacionBeneficiariaTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Tiempo Ejecucion (meses):</b>&nbsp;&nbsp; </label><label id="tiempoEjecucionmeses" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="tiempoEjecucionmesesTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Número Beneficiarios:</b>&nbsp;&nbsp; </label><label id="numeroBeneficiarios" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="numeroBeneficiariosTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Aporte GAD Provincial:</b>&nbsp;&nbsp; </label><label id="aporteGadProvincial" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="aporteGadProvincialTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Aporte GAD Municipal:</b>&nbsp;&nbsp; </label><label id="aporteGadMunicipal" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="aporteGadMunicipalTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Aporte GAD Parroquial:</b>&nbsp;&nbsp; </label><label id="aporteGadParroquial" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="aporteGadParroquialTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Aporte Beneficiarios:</b>&nbsp;&nbsp; </label><label id="aporteBeneficiarios" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="aporteBeneficiariosTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Aporte Externo:</b>&nbsp;&nbsp; </label><label id="aporteExterno" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="aporteExternoTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Presupuesto Entregado:</b>&nbsp;&nbsp; </label><label id="presupuestoEntregado" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="presupuestoEntregadoTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Presupuesto:</b>&nbsp;&nbsp; </label><label id="presupuesto" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="presupuestoTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Objetivo General:</b>&nbsp;&nbsp; </label><label id="objetivoGeneral" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="objetivoGeneralTxt" value="" class="form-control" hidden/>
+							</div>
+							<div class="item">
+								<label><b>Estado:</b>&nbsp;&nbsp; </label><label id="estado" style="text-align: justify;text-justify: inter-word;"></label>
+								<input type="text" id="estadoTxt" value="" class="form-control" hidden/>
+							</div>	
+						</div>
+						
+						<div style="text-align: center;"><b><label id="objetivoEspecificoTitulo"></label></b></div>
+
+						
+						<div align="center" id="loading">
+
+							<div class="lds-css ng-scope" style="width: 200px; height: 200px;"><div style="width:100%;height:100%" class="lds-ripple"><div></div><div></div></div><style type="text/css">@keyframes lds-ripple {
+								0% {
+									top: 96px;
+									left: 96px;
+									width: 0;
+									height: 0;
+									opacity: 1;
+								}
+								100% {
+									top: 18px;
+									left: 18px;
+									width: 156px;
+									height: 156px;
+									opacity: 0;
+								}
+							}
+							@-webkit-keyframes lds-ripple {
+								0% {
+									top: 96px;
+									left: 96px;
+									width: 0;
+									height: 0;
+									opacity: 1;
+								}
+								100% {
+									top: 18px;
+									left: 18px;
+									width: 156px;
+									height: 156px;
+									opacity: 0;
+								}
+							}
+							.lds-ripple {
+								position: relative;
+							}
+							.lds-ripple div {
+								box-sizing: content-box;
+								position: absolute;
+								border-width: 4px;
+								border-style: solid;
+								opacity: 1;
+								border-radius: 50%;
+								-webkit-animation: lds-ripple 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+								animation: lds-ripple 1.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+							}
+							.lds-ripple div:nth-child(1) {
+								border-color: #222831;
+							}
+							.lds-ripple div:nth-child(2) {
+								border-color: #00adb5;
+								-webkit-animation-delay: -0.7s;
+								animation-delay: -0.7s;
+							}
+							.lds-ripple {
+								width: 200px !important;
+								height: 200px !important;
+								-webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+								transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+							}
+						</style></div>
+
+					</div>
+
+				</div>
+
+				<ul class="list-group" id="listObjetivosEspecificos" style="text-align: justify;text-justify: inter-word;">
+				</ul>
+
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+	<!-- TODO EL CONTENIDO -->
+
+</div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="js/jquery.min.js"></script>
+<!-- Popper.JS -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="js/bootstrap.min.js"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript" src="js/geturi.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#sidebar").mCustomScrollbar({
+			theme: "minimal"
+		});
+
+		$('#dismiss, .overlay').on('click', function () {
+			$('#sidebar').removeClass('active');
+			$('.overlay').removeClass('active');
+		});
+
+		$('#sidebarCollapse').on('click', function () {
+			$('#sidebar').addClass('active');
+			$('.overlay').addClass('active');
+			$('.collapse.in').toggleClass('in');
+			$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+		});
+
+
+
+
+
+		var id = decodeURI(getUrlVars()["id"]);
+		var nombre = decodeURI(getUrlVars()["nombre"]);
+		var canton = decodeURI(getUrlVars()["canton"]);		
+		var parroquia = decodeURI(getUrlVars()["parroquia"]);
+		var organizacionBeneficiaria = decodeURI(getUrlVars()["organizacionBeneficiaria"]);
+		var tiempoEjecucionmeses = decodeURI(getUrlVars()["tiempoEjecucionmeses"]);
+		var numeroBeneficiarios = decodeURI(getUrlVars()["numeroBeneficiarios"]);
+		var aporteGadProvincial = decodeURI(getUrlVars()["aporteGadProvincial"]);
+		var aporteGadMunicipal = decodeURI(getUrlVars()["aporteGadMunicipal"]);
+		var aporteGadParroquial = decodeURI(getUrlVars()["aporteGadParroquial"]);
+		var aporteBeneficiarios = decodeURI(getUrlVars()["aporteBeneficiarios"]);
+		var aporteExterno = decodeURI(getUrlVars()["aporteExterno"]);
+		var presupuestoEntregado = decodeURI(getUrlVars()["presupuestoEntregado"]);
+		var presupuesto = decodeURI(getUrlVars()["presupuesto"]);
+		var objetivoGeneral = decodeURI(getUrlVars()["objetivoGeneral"]);
+		var estado = decodeURI(getUrlVars()["estado"]);		
+
+
+		$("#id").val(id);
+		$("#nombre").text(nombre);			
+		$("#canton").text(canton);			
+		$("#parroquia").text(parroquia);
+		$("#organizacionBeneficiaria").text(organizacionBeneficiaria);
+		$("#tiempoEjecucionmeses").text(tiempoEjecucionmeses);
+		$("#numeroBeneficiarios").text(numeroBeneficiarios);
+		$("#aporteGadProvincial").text(aporteGadProvincial);
+		$("#aporteGadMunicipal").text(aporteGadMunicipal);
+		$("#aporteGadParroquial").text(aporteGadParroquial);
+		$("#aporteBeneficiarios").text(aporteBeneficiarios);
+		$("#aporteExterno").text(aporteExterno);
+		$("#presupuestoEntregado").text(presupuestoEntregado);
+		$("#presupuesto").text(presupuesto);
+		$("#objetivoGeneral").text(objetivoGeneral);
+		$("#estado").text(estado);
+
+
+		var dataString = "id=" + id ;				
+		$.ajax({
+			type: "POST",
+			url: "http://appplanificacion.000webhostapp.com/app/objetivosEspecificos.php",
+			data: dataString,
+			crossDomain: true,
+			cache: false,
+			beforeSend: function() {
+				
+			},
+			success: function(res) {						
+						$("#loading").toggle();
+						$('#listObjetivosEspecificos').empty();
+						res = JSON.parse(res);
+
+						if (jQuery.isEmptyObject(res)) {
+
+							$("#objetivoEspecificoTitulo").text('');	
+
+						}else{
+
+							$("#objetivoEspecificoTitulo").text("Objetivos Específicos");
+							$.each(res,function(index,field) {							 
+								$('#listObjetivosEspecificos').append("<a class='list-group-item list-group-item-action' href='indicadores.html?id=" + field.id + "&objetivoEspecifico=" + field.objetivoEspecifico + "'><label style='text-align: justify;text-justify: inter-word;'>" + field.objetivoEspecifico + " </label></a>");
+							});
+						}
+
+					}
+				});
+
+
+
+
+	});
+</script>
+</body>
+
+</html>

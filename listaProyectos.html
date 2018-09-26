@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<META http-equiv="Content-Type" content="text/html" charset="utf-8" />
+
+	<title>Lista de Proyectos</title>
+
+	<!-- Bootstrap CSS CDN -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Our Custom CSS -->
+	<link rel="stylesheet" href="css/mainStyle.css">
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+
+	<!-- Font Awesome JS -->
+	<script defer src="js/solid.js"></script>
+	<script defer src="js/fontawesome.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
+	<script type="text/javascript" src="js/loading-bar.js"></script>	
+
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<nav id="sidebar">
+			<div id="dismiss">
+				<i class="fas fa-arrow-left"></i>
+			</div>
+
+			<div class="sidebar-header">
+				<h3>Menú de Opciones</h3>
+			</div>		
+
+
+			<ul class="list-unstyled components">                
+				<li >
+					<a type="button" class="btn btn-info" onclick="location.reload();">Actualizar lista</a>						
+				</li>
+			</ul>
+
+			<ul class="list-unstyled CTAs">
+				<li>
+					<a type="button" class="btn btn-dark" onclick="window.history.back()">Salir</a>					
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+
+					<button type="button" id="sidebarCollapse" class="btn btn-info">
+						<i class="fas fa-align-left"></i>
+						<span></span>
+					</button>
+
+					<a class="nav-link" href="#" >LISTADO DE PROYECTOS</a>
+
+				</div>
+			</nav>
+
+			<!-- TODO EL CONTENIDO -->
+
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						
+						<ul class="list-group" id="listview" style="text-align: justify;text-justify: inter-word;">
+						</ul>
+
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+			<!-- TODO EL CONTENIDO -->
+
+		</div>
+	</div>
+
+	<div class="overlay"></div>
+
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Popper.JS -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- jQuery Custom Scroller CDN -->
+	<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+	<script type="text/javascript" src="js/geturi.js"></script>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#sidebar").mCustomScrollbar({
+				theme: "minimal"
+			});
+
+			$('#dismiss, .overlay').on('click', function () {
+				$('#sidebar').removeClass('active');
+				$('.overlay').removeClass('active');
+			});
+
+			$('#sidebarCollapse').on('click', function () {
+				$('#sidebar').addClass('active');
+				$('.overlay').addClass('active');
+				$('.collapse.in').toggleClass('in');
+				$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+			});
+
+
+
+
+
+			var url = "http://appplanificacion.000webhostapp.com/app/listaProyectos.php";
+			$.getJSON(url, function(result) {
+				console.log(result);
+				$.each(result, function(i, field) {
+					var id = field.id;                  
+					var nombre = field.nombre;
+					var canton = field.canton;
+					var parroquia = field.parroquia;
+					var organizacionBeneficiaria = field.organizacionBeneficiaria;
+					var tiempoEjecucionmeses = field.tiempoEjecucionmeses;
+					var numeroBeneficiarios = field.numeroBeneficiarios;
+					var aporteGadProvincial = field.aporteGadProvincial;
+					var aporteGadMunicipal = field.aporteGadMunicipal;
+					var aporteGadParroquial = field.aporteGadParroquial;
+					var aporteBeneficiarios = field.aporteBeneficiarios;
+					var aporteExterno = field.aporteExterno;
+					var presupuestoEntregado = field.presupuestoEntregado;
+					var presupuesto = field.presupuesto;
+					var objetivoGeneral = field.objetivoGeneral;
+					var estado = field.estado;									
+					if (field.id) {
+						$("#listview").append("<a class='list-group-item list-group-item-action' href='detalleProyecto.html?id=" + id + "&nombre=" + nombre + "&canton=" + canton + "&parroquia=" + parroquia + "&organizacionBeneficiaria=" + organizacionBeneficiaria + "&tiempoEjecucionmeses=" + tiempoEjecucionmeses + "&numeroBeneficiarios=" + numeroBeneficiarios + "&aporteGadProvincial=" + aporteGadProvincial + "&aporteGadMunicipal=" + aporteGadMunicipal + "&aporteGadParroquial=" + aporteGadParroquial + "&aporteBeneficiarios=" + aporteBeneficiarios + "&aporteExterno=" + aporteExterno + "&presupuestoEntregado=" + presupuestoEntregado + "&presupuesto=" + presupuesto + "&objetivoGeneral=" + objetivoGeneral + "&estado=" + estado + "&estado1=" + estado + "'><span class='item-note'>$" + presupuesto + "</span><h5>" + nombre + " </h5><p>" + canton + "-"+ parroquia +"</p></a>");
+					}
+				});
+			});
+
+
+
+
+		});
+	</script>
+</body>
+
+</html>
